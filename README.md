@@ -2,7 +2,7 @@
 
 > This project was developed as a resolution of a technical test, with the [**Vue.js**](https://vuejs.org/), and [**Vuex**](https://vuex.vuejs.org/) (state management), as requirements.
 > 
-> To see what the project is becoming, go to [**Filmera**]()
+> To see what the project is becoming, go to [**Filmera**](https://filmera.vercel.app/)
 
 
 <p align="center">
