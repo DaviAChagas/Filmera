@@ -19,10 +19,9 @@
           <img src="../assets/favorite.png" alt="">
         </button>
 
-                <h3 class="movie date">{{movie.release_date}}</h3>
         </div>
 
-        <div class="otherInfos">
+        <div class="infos">
 
             <div class="title">
                 <h3 class="movie ">{{movie.title}}</h3>
@@ -81,6 +80,8 @@ export default {
     width: 16vw;
     flex-direction: column;
     justify-content: flex-start;
+    border-radius: 20px;
+    background-color: #0F1F2F;
 }
 
 .poster {
@@ -94,6 +95,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(10, 1fr);
+    border-radius: 20px;
 }
 
 .poster ul {
@@ -137,22 +139,12 @@ export default {
     width: 5.5vh;
 }
 
-.date {
-    grid-column: 1/11;
-    grid-row: 10/10;
-    background-color: rgba(10,23,55,0.3);
-    padding: 3px 0 3px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.otherInfos {
-    background-color: #0F1F2F;
-    height: 15vh;
+.infos {
+    height: 13vh;
+    padding: 1.5vh;
+    border-radius: 20px;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
     
 }
 
@@ -174,8 +166,11 @@ export default {
     width: 3.5vh;
 }
 
-.otherInfos button {
+.infos button {
     height: 5.5vh;
+    width: 45%;
+    margin-left: auto;
+    border-radius: 40px;
     border: none;
     background-color: #EA5B3B;
     transition: 500ms;
@@ -255,7 +250,20 @@ export default {
     width: 5.5vh;
 }
 
+}
 
+@media (orientation: portrait) {
+    .MovieCard {
+        margin: 8vh 0 -10vh 0;
+        height: 66vh;
+        width: 72vw;
+        padding-bottom: 0.5vh;
+    }
+
+    .poster {
+    width: 100%;
+    height: 50vh;
+}
 }
 
 </style>
