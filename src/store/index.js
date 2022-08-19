@@ -6,6 +6,7 @@ export default createStore({
     genres: [],
     cartList: [],
     favoriteList: [],
+    amount: 0,
     isCartOpen: false,
     isFavoriteOpen: false,
     API_KEY: process.env.VUE_APP_API_KEY
@@ -28,18 +29,20 @@ export default createStore({
           })
   })
           .catch(err => console.log(err));
-  },
+},
 
   fetchGenres(state) {
       fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${state.API_KEY}&language=en-US`)
           .then(res => { return res.json(); })
           .then(res => state.genres = res.genres)
           .catch(err => console.log(err));
-  },
+},
 
   addToCart(state, movie) {
+    movie.quantity = 1
     state.cartList.push(movie)  
-  },
+    state.cartList = [... new Set(state.cartList)]  
+},
 
   addToFavorite(state, movie) {
     state.favoriteList.push(movie)  
@@ -49,12 +52,12 @@ export default createStore({
   toggleCartBar(state) {
     state.isCartOpen = !state.isCartOpen
     state.isFavoriteOpen = false
-  },
+},
 
   toggleFavoriteBar(state) {
     state.isFavoriteOpen = !state.isFavoriteOpen
     state.isCartOpen = false
-  },
+},
 
   deleteFavoriteItem(state, movie) {
     state.favoriteList = state.favoriteList.filter(item => {
@@ -62,7 +65,7 @@ export default createStore({
         return item
       }
     })
-  },
+},
   
   deleteCartItem(state, movie) {
     state.cartList = state.cartList.filter(item => {

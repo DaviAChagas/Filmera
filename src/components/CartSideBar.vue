@@ -37,11 +37,18 @@
   </tr>
 </div>    
 
+<div class="buyInfos">
+
+    <h3 class="price"> 
+        Amount: $100.99
+    </h3>
+
     <button @click.stop.prevent = "this.$store.commit('toggleCartBar')" class="cartButton">
         <router-link to="/purchase" active-class="active" :style="'text-decoration: none;'">
-            Finalizar Compra
+            Finalize purchase
         </router-link>
     </button>
+</div>
 
 </div>
 
@@ -57,19 +64,6 @@ export default {
 
 
 <style>
-.sidebar {
-    position: fixed;
-    z-index: 50;
-    width: 28vw;
-    padding: 0 1vw;
-    top: 8vh;
-    right: 0;
-    height: 92vh;
-    background-color: #0b0716;
-    display: flex;
-    flex-direction: column;
-}
-
 .cleanList {
     color: #EA5B3B;
     text-decoration: underline;
