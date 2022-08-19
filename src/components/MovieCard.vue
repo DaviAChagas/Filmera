@@ -32,14 +32,16 @@
                 <h3 class="movie">{{movie.vote_average}}</h3>
             </div>
 
-            <span class="movie price"> 
-                {{movie.price}}
-</span>
+        <div class="buyInfos">
+            <h3 class="movie price"> 
+                ${{movie.price}}
+            </h3>
 
                 <button class="cart" @click.stop.prevent="$store.commit('addToCart', movie)">
                  Add   
                 </button>
 
+            </div>
         </div>
     </div>
  </div>   
@@ -57,7 +59,6 @@ export default {
     created() {
        this.$store.commit('fetchMovies')
        this.$store.commit('fetchGenres')
-       this.$store.commit('fecthFakePrices')
     }
 }
 
@@ -116,14 +117,14 @@ export default {
 }
 
 .poster button {
-    grid-column: 10/10;
-    grid-row: 1/1;
-    height: 6vh;
+    grid-column: 6/7;
+    margin-right: 20px;
+    height: 9vh;
     width: 6vh;
     text-decoration: none;
     border: none;
-    background-color: rgba(10,23,55,0.3);
-    border-radius: 10px;
+    background-color: #0F1F2F;;
+    border-radius: 0px 0px 100px 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,15 +167,20 @@ export default {
     width: 3.5vh;
 }
 
-.infos button {
+.buyInfos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buyInfos button {
     height: 5.5vh;
-    width: 45%;
-    margin-left: auto;
+    width: 55%;
     border-radius: 40px;
     border: none;
     background-color: #EA5B3B;
     transition: 500ms;
-    font-size: large;
+    font-size: 20px;
 }
 
 
@@ -224,20 +230,6 @@ export default {
   margin-bottom: 10px;
   border-radius: 5px;
   background-color: rgba(10,23,55,0.5);
-}
-
-.poster button {
-    grid-column: 10/10;
-    grid-row: 1/1;
-    height: 6vh;
-    width: 6vh;
-    text-decoration: none;
-    border: none;
-    background-color: rgba(10,23,55,0.3);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .poster img {
