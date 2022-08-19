@@ -16,7 +16,7 @@
         v-bind:key = "movie.id">
 
     <td class="titleTD">{{movie.title}}</td>
-    <td class="priceTD">R$ 20.99</td>
+    <td class="priceTD">{{movie.price}}</td>
     <td class="quantityTD">1</td>
 
     <td class="trashTD">        
