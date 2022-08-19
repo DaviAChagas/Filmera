@@ -3,7 +3,6 @@
   <FavoriteSideBar />
   <CartSideBar />
   <router-view></router-view>
-
 </template>
 
 <script>
@@ -45,7 +44,7 @@ button {
   cursor: pointer;
 }
 
-.otherInfos button:hover {
+.infos button:hover {
    background-color: #ff6f40;
 }
 
