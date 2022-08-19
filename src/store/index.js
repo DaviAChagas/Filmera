@@ -4,7 +4,6 @@ export default createStore({
   state: {
     movies: [],
     genres: [],
-    prices: [],
     cartList: [],
     favoriteList: [],
     isCartOpen: false,
@@ -21,7 +20,13 @@ export default createStore({
     fetchMovies(state) {
       fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${state.API_KEY}&language=en-US&page=1`)
           .then(res => { return res.json(); })
-          .then(res => {state.movies = res.results})
+          .then(res => {
+            state.movies = res.results   
+              state.movies.forEach(movie => {
+                movie.price = (Math.floor(
+                  Math.random() * (30 - 20 + 1) ) + 20) + 0.99
+          })
+  })
           .catch(err => console.log(err));
   },
 
@@ -30,13 +35,6 @@ export default createStore({
           .then(res => { return res.json(); })
           .then(res => state.genres = res.genres)
           .catch(err => console.log(err));
-  },
-
-  fecthFakePrices(state) {
-    fetch('http://www.randomnumberapi.com/api/v1.0/randomredditnumber?min=15&max=40&count=25')
-    .then(res => { return res.json(); })
-    .then(res => state.prices = res)
-    .catch(err => console.log(err));
   },
 
   addToCart(state, movie) {
