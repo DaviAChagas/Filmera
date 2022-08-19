@@ -15,9 +15,17 @@
   <tr v-for = "movie in $store.state.cartList"
         v-bind:key = "movie.id">
 
-    <td class="titleTD">{{movie.title}}</td>
-    <td class="priceTD">{{movie.price}}</td>
-    <td class="quantityTD">1</td>
+    <td class="titleTD">
+        <p>{{movie.title}}</p>
+    </td>
+
+    <td class="priceTD">
+        {{movie.price}}
+    </td>
+
+    <td class="quantityTD">
+        {{movie.quantity}}
+    </td>
 
     <td class="trashTD">        
         <span class="trash"  @click.stop.prevent="$store.commit('deleteCartItem', movie)">
@@ -103,6 +111,9 @@ td {
 
 .titleTD {
     grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .priceTD {
