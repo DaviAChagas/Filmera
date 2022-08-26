@@ -15,8 +15,17 @@
 
             </ul>
 
-        <button @click.stop.prevent="$store.commit('addToFavorite', movie)">
-          <img src="../assets/favorite.png" alt="">
+        <button 
+        v-bind:class="{favorite: movie.isFavorite}"
+        @click.stop.prevent="$store.commit('addToFavorite', movie)">
+
+<svg      
+width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.5827 6.25C8.8306 6.25 4.16602 10.8667 4.16602 16.5625C4.16602 21.1604 5.98893 32.0729 23.9327 43.1042C24.2541 43.2997 24.6231 43.4032 24.9993 43.4032C25.3756 43.4032 25.7446 
+43.2997 26.066 43.1042C44.0098 32.0729 45.8327 21.1604 45.8327 16.5625C45.8327 10.8667 41.1681 6.25 35.416 6.25C29.6639 6.25 24.9993 12.5 24.9993 12.5C24.9993 12.5 20.3348 6.25 14.5827 
+6.25Z" stroke="#EA5B3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
         </button>
 
         </div>
@@ -37,7 +46,7 @@
                 ${{movie.price}}
             </h3>
 
-                <button class="cart" @click.stop.prevent="$store.commit('addToCart', movie)">
+                <button class="cart" @click.stop.prevent="$store.commit('addToCart', movie)"> 
                  Add   
                 </button>
 
@@ -130,14 +139,19 @@ export default {
     justify-content: center;
 }
 
-.poster img {
-    width: 5vh;
-    filter: grayscale(1);
-    transition: 400ms;
+.poster button svg:hover path {
+    stroke: #ff8844;
+    stroke-width: 1px;
 }
 
-.poster img:hover {
-    width: 5.5vh;
+.favorite svg:hover path{
+    stroke: #ea5b3b !important;
+    stroke-width: 3px;
+}
+
+.favorite > svg{
+    fill: #ea5b3b;
+    transition: 400ms;
 }
 
 
@@ -257,5 +271,4 @@ export default {
     height: 50vh;
 }
 }
-
 </style>

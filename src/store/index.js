@@ -6,7 +6,7 @@ export default createStore({
     genres: [],
     cartList: [],
     favoriteList: [],
-    amount: 0,
+    amount: 120.99,
     isCartOpen: false,
     isFavoriteOpen: false,
     API_KEY: process.env.VUE_APP_API_KEY
@@ -24,6 +24,7 @@ export default createStore({
           .then(res => {
             state.movies = res.results   
               state.movies.forEach(movie => {
+                movie.isFavorite = false
                 movie.price = (Math.floor(
                   Math.random() * (30 - 20 + 1) ) + 20) + 0.99
           })
@@ -45,8 +46,21 @@ export default createStore({
 },
 
   addToFavorite(state, movie) {
-    state.favoriteList.push(movie)  
-    state.favoriteList = [... new Set(state.favoriteList)]
+    let add = () => {
+      state.favoriteList.push(movie)  
+      state.favoriteList = [... new Set(state.favoriteList)]
+    }
+
+    let remove = () => {
+      state.favoriteList = state.favoriteList.filter(item => {
+        if(item.id != movie.id) {
+          return item
+        }
+      })
+    }
+
+    movie.isFavorite = !movie.isFavorite
+    movie.isFavorite ? add() : remove()
 },
 
   toggleCartBar(state) {
@@ -59,13 +73,12 @@ export default createStore({
     state.isCartOpen = false
 },
 
-  deleteFavoriteItem(state, movie) {
-    state.favoriteList = state.favoriteList.filter(item => {
-      if(item.id != movie.id) {
-        return item
-      }
+  sumPrices(state) {
+    state.cartList.forEach(movie => {
+      state.amouunt =+ movie.price
     })
-},
+
+  },
   
   deleteCartItem(state, movie) {
     state.cartList = state.cartList.filter(item => {
@@ -75,7 +88,18 @@ export default createStore({
     })
   },
 
+  deleteFavoriteItem(state, movie) {
+    movie.isFavorite =  false
+    state.favoriteList = state.favoriteList.filter(item => {
+      if(item.id != movie.id) {
+        return item
+      }
+    })
+},
   cleanFavoriteList(state) {
+    state.movies.forEach(movie => {
+      movie.isFavorite = false
+    })
     state.favoriteList = state.favoriteList.filter(item => {
       item.id !== 0
     })
@@ -86,6 +110,7 @@ export default createStore({
       item.id !== 0
     })
   },  
+
 
 },
   actions: {

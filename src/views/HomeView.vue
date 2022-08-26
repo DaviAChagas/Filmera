@@ -20,11 +20,6 @@ export default {
   z-index: 1;
 }
 
-#app {
-overflow-x: hidden;
-background-image: linear-gradient(#0d1626,#0a0615);
-}
-
 button {
   cursor: pointer;
 }
