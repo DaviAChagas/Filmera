@@ -40,7 +40,7 @@ background-image: linear-gradient(#0d1626,#0a0615);
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
-button {
+button, svg {
   cursor: pointer;
 }
 
