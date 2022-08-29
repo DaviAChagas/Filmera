@@ -40,7 +40,7 @@
 <div class="buyInfos">
 
     <h3 class="price"> 
-        Amount: $100.99
+        Amount: ${{$store.state.amount}}
     </h3>
 
     <button @click.stop.prevent = "this.$store.commit('toggleCartBar')" class="cartButton">
@@ -56,9 +56,8 @@
 
 
 <script>
-
 export default {
-    name: "FavoriteSideBar",
+    name: "CartSideBar",
 }
 </script>
 
