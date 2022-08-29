@@ -18,10 +18,10 @@
 - [x] Implement functionality to add/remove movies to user's favorites list
 - [] Show quantity of cart items in the open cart button
 - [] Proceed to checkout
-- [] Validate the complete filling of the form
+- [x] Validate the complete filling of the form
 - [] At the end of the purchase, present the success modal
 - [] Movie search
-- [] Implement masks in the e-mail, cell phone, zip code and CPF fields (Brazilian pattern)
+- [x] Implement masks in the e-mail, cell phone, zip code and CPF fields (Brazilian pattern)
 - [] End the not found page
 - [] Make the project view available in README.md
 - [] Make code comments available
